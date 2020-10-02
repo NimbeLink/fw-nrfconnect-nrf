@@ -6,10 +6,18 @@
 
 menuconfig FOTA_DOWNLOAD
 	bool "FOTA Download"
+
+if (FOTA_DOWNLOAD)
+
+config FOTA_DOWNLOAD_NRF
+	bool "NRF FOTA Download"
 	depends on DOWNLOAD_CLIENT
 	depends on DFU_TARGET
 
-if (FOTA_DOWNLOAD)
+config FOTA_DOWNLOAD_OFFLOAD
+	bool "External FOTA Download"
+	depends on !FOTA_DOWNLOAD_NRF
+	default y
 
 config FOTA_SOCKET_RETRIES
 	int "Number of retries for socket-related download issues"
