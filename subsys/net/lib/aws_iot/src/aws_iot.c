@@ -666,7 +666,10 @@ int aws_iot_connect(struct aws_iot_config *const config)
 	}
 
 #if !defined(CONFIG_CLOUD_API)
-	config->socket = client.transport.tls.sock;
+	if (config != NULL)
+	{
+		config->socket = client.transport.tls.sock;
+	}
 #endif
 
 	return err;
