@@ -8,9 +8,17 @@ menu "AT Command driver"
 
 config AT_CMD
 	bool "AT Command driver"
-	depends on BSD_LIBRARY
 
 if AT_CMD
+
+config AT_CMD_NRF
+	bool "NRF AT Command driver"
+	depends on BSD_LIBRARY
+
+config AT_CMD_OFFLOAD
+	bool "External AT Command driver"
+	depends on !AT_CMD_NRF
+	default y
 
 config AT_CMD_SYS_INIT
 	bool "Initialize the AT Command driver during system init"
