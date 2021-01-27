@@ -7,4 +7,3 @@
 config MODEM_KEY_MGMT
 	bool "nRF9160 modem key management library"
 	depends on AT_CMD_PARSER
-	depends on BSD_LIBRARY
